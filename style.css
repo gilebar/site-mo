@@ -1,0 +1,320 @@
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  color: #333;
+}
+
+/* ---------- MENU SUPERIOR ---------- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #111;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Georgia', serif;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #ff69b4;
+  border-radius: 5px;
+}
+
+/* ---------- SEÇÕES ---------- */
+section {
+  display: none;
+  padding: 120px 25px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section.active {
+  display: block;
+}
+
+section h1, section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+  color: #e75480;
+}
+
+section p {
+  font-size: 1.1em;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+/* ---------- CARROSSEL ---------- */
+.carousel-container {
+  position: relative;
+  max-width: 400px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Botões do carrossel */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 100;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ---------- SPOTIFY PLAYER ---------- */
+.spotify-player {
+  margin: 40px auto;
+  max-width: 600px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffeef5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ---------- MÁQUINA DO TEMPO (manter como você pediu) ---------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 30px auto;
+  max-width: 900px;
+  padding: 10px;
+}
+
+.timeline .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffe4ec;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.timeline .item:hover {
+  transform: scale(1.02);
+}
+
+.timeline .item img {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.timeline .item p {
+  flex: 1;
+  font-size: 1.1em;
+  color: #444;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  padding: 10px;
+}
+
+.timeline .item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* ---------- CARTA ABERTA ---------- */
+#carta p {
+  max-width: 700px;
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0 auto;
+  color: #555;
+  font-style: italic;
+}
+
+/* Ícone menu hamburguer */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 15px 20px;
+  color: white;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    text-align: center;
+  }
+}
+  .carousel-container {
+    max-width: 90%;
+  }
+
+  .carousel img {
+    width: 100%;
+  }
+
+  .timeline .item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .timeline .item:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .timeline img {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .spotify-player {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+/* ---------- CORAÇÕES NO FUNDO ---------- */
+.hearts-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #ff69b4;
+  transform: rotate(45deg);
+  animation: float 10s linear infinite;
+  opacity: 0.6;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #ff69b4;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7.5px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7.5px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+.contador-amor {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Georgia', serif;
+  color: #ff69b4;
+  font-size: 1.3em;
+  background: #fff0f6;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
